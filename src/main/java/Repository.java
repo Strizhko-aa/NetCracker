@@ -10,8 +10,11 @@ public class Repository {
   }
 
   public void addPerson (Person pers) {
-    if (this.length - this.count <= 2) {
-      this.persons = new Person[this.length + (int) java.lang.Math.round(this.length * 0.1)];
+    if (this.length - this.count <= 1) {
+      this.length = (int)(this.length * 1.5);
+      Person []tmpMass = new Person[length];
+      tmpMass = this.persons;
+      this.persons = tmpMass;
     }
     this.persons[this.count] = pers;
     this.count++;

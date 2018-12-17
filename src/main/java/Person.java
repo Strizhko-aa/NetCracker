@@ -8,8 +8,9 @@ public class Person {
   private LocalDate birthday;
   private int age;
 
-  public void printPerson () {
-    System.out.print("full name : " + getFullName() + ", sex: " + getSex() + ", birthday: " + getBirthday() + ", age: " + getAge() + " id: " + getId());
+  @Override
+  public String toString () {
+    return "full name : " + getFullName() + ", sex: " + getSex() + ", birthday: " + getBirthday() + ", age: " + getAge() + " id: " + getId();
   }
 
   public int getId() {
@@ -33,7 +34,7 @@ public class Person {
   }
 
   private void setId() {
-    this.id = DateTime.now().getMillisOfSecond();
+    this.id = (int) (Math.random() * 100);
   }
 
   public void setFullName(String fullName) {
@@ -55,6 +56,18 @@ public class Person {
     int tmpAgeDays = tmpDateNow.getDayOfMonth() - getBirthday().getDayOfMonth();
     if (tmpAgeMounth < 0 || tmpAgeDays < 0) {
       this.age--;
+    }
+  }
+
+  @Override
+  public boolean equals(Object other){
+    if (other == null) return false;
+    if (other == this) return true;
+    if (!(other instanceof Person))return false;
+    if (((Person) other).age == this.age && ((Person) other).fullName == this.fullName && ((Person) other).id == this.id) {
+      return true;
+    } else {
+      return false;
     }
   }
 

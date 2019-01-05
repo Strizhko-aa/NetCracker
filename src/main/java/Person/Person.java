@@ -1,5 +1,7 @@
-import org.joda.time.DateTime;
+package Person;
+
 import org.joda.time.LocalDate;
+
 
 public class Person {
   private int id;
@@ -8,6 +10,10 @@ public class Person {
   private LocalDate birthday;
   private int age;
 
+  /**
+   *
+   * @return строку с всеми данными о пользователе
+   */
   @Override
   public String toString () {
     return "full name : " + getFullName() + ", sex: " + getSex() + ", birthday: " + getBirthday() + ", age: " + getAge() + " id: " + getId();
@@ -33,7 +39,7 @@ public class Person {
     return this.sex;
   }
 
-  private void setId() {
+  public void setId() {
     this.id = (int) (Math.random() * 100);
   }
 
@@ -41,11 +47,12 @@ public class Person {
     this.fullName = fullName;
   }
 
-  private void setBirthday(LocalDate birthday) {
+  public void setBirthday(LocalDate birthday) {
     this.birthday = birthday;
+    setAge();
   }
 
-  private void setSex(String sex) {
+  public void setSex(String sex) {
     this.sex = sex;
   }
 
@@ -71,11 +78,18 @@ public class Person {
     }
   }
 
-  Person (String fullName, String sex, LocalDate bd) {
+  // конструктор. принимает полное имя(String), пол(String "male/female"), дату (LocalDate)
+
+  /**
+   *
+   * @param fullName
+   * @param sex
+   * @param bd
+   */
+  public Person(String fullName, String sex, LocalDate bd) {
     setFullName(fullName);
     setSex(sex);
     setBirthday(bd);
     setId();
-    setAge();
   }
 }

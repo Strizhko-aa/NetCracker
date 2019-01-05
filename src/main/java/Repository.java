@@ -1,4 +1,4 @@
-import org.joda.time.LocalDate;
+import Person.Person;
 
 public class Repository {
   private Person[] persons;
@@ -11,6 +11,7 @@ public class Repository {
     this.length = 10;
   }
 
+  //добавляет пользователя в репозиторий, если занимается предпоследний слот, то расширяется в полтора раза
   public void addPerson (Person pers) {
     if (this.length - this.count <= 1) {
       this.length = (int)(this.length * 1.5);
@@ -24,16 +25,23 @@ public class Repository {
     this.count++;
   }
 
+//  поиск по имени
+
+  /**
+   *
+   * @param fullName
+   * @return Person.Person or null
+   */
   public Person getPersonByFullName (String fullName) {
     for (int i = 0; i < this.count; i++) {
       if (this.persons[i].getFullName() == fullName) {
         return this.persons[i];
       }
     }
-//    return new Person("error", "error", new LocalDate("01-01-999"));
     return null;
   }
 
+  // удаление по fullname. Также уменьшает размерность на 1
   public void deletePersonByFullName (String fullName) {
     Person tmpPers = getPersonByFullName(fullName);
     if (tmpPers != null) {
@@ -51,6 +59,7 @@ public class Repository {
     }
   }
 
+  // вывод репозитория
   public Person[] showRepository () {
     for (int i = 0; i < this.count; i++) {
       System.out.println(this.persons[i]);

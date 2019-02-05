@@ -1,5 +1,7 @@
 import Person.Comparator.ComparatorForFullName;
 import Person.Person;
+import Person.sort.bubble;
+import Person.sort.sort;
 import org.joda.time.LocalDate;
 import org.junit.Test;
 
@@ -30,6 +32,9 @@ public class RepoTest {
     Repository repo = new Repository();
     repo.addPerson(user1);
     repo.addPerson(user2);
+    repo.addPerson(user3);
+    repo.addPerson(user4);
+    repo.addPerson(user5);
   }
 
   @Test
@@ -41,5 +46,20 @@ public class RepoTest {
     assertEquals(1, actual2);
     int actual3 = compFN.compare(user1, user1); //  equals name
     assertEquals(0, actual3);
+  }
+
+  @Test
+  public void testBubbleSort () {
+    Repository repo = new Repository();
+    repo.addPerson(user1);
+    repo.addPerson(user2);
+    repo.addPerson(user3);
+    repo.addPerson(user4);
+    repo.addPerson(user5);
+    sort bubbleSorter = new bubble();
+    ComparatorForFullName compFN = new ComparatorForFullName();
+    repo.showRepository();
+    bubbleSorter.sort(repo.getPersons(), repo.getCount(), compFN);
+    repo.showRepository();
   }
 }

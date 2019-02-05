@@ -1,14 +1,32 @@
 import Person.Person;
 
+import java.util.logging.Logger;
+
 public class Repository {
+
+  private static Logger log = Logger.getLogger(Repository.class.getName());
+
   private Person[] persons;
-  private Integer count;
-  private Integer length;
+  private Integer count;  //  кол-во элементов
+  private Integer length; // максимальная длинна
 
   Repository() {
     this.persons = new Person[10];
     this.count = 0;
     this.length = 10;
+    log.info("repository created");
+  }
+
+  public Person[] getPersons() {
+    return persons;
+  }
+
+  public Integer getCount() {
+    return count;
+  }
+
+  public Integer getLength() {
+    return length;
   }
 
   //добавляет пользователя в репозиторий, если занимается предпоследний слот, то расширяется в полтора раза

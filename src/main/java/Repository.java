@@ -31,6 +31,7 @@ public class Repository {
 
   //добавляет пользователя в репозиторий, если занимается предпоследний слот, то расширяется в полтора раза
   public void addPerson (Person pers) {
+    log.info("add person");
     if (this.length - this.count <= 1) {
       this.length = (int)(this.length * 1.5);
       Person []tmpMass = new Person[length];
@@ -51,6 +52,7 @@ public class Repository {
    * @return Person.Person or null
    */
   public Person getPersonByFullName (String fullName) {
+    log.info("try get person by full name");
     for (int i = 0; i < this.count; i++) {
       if (this.persons[i].getFullName() == fullName) {
         return this.persons[i];
@@ -61,6 +63,7 @@ public class Repository {
 
   // удаление по fullname. Также уменьшает размерность на 1
   public void deletePersonByFullName (String fullName) {
+    log.info("try del by full name");
     Person tmpPers = getPersonByFullName(fullName);
     if (tmpPers != null) {
       Person[] tmpMass = new Person[this.length - 1];

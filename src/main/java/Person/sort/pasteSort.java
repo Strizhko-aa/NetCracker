@@ -10,7 +10,7 @@ public class pasteSort implements sort {
 	private static Logger log = Logger.getLogger(pasteSort.class.getName());
 
 	public void sort(Person[] arr, int personCount, Comparator<Person> comp) {
-		log.info("start bubble sort, comparator: " + comp.getClass().getName());
+		log.info("start paste sort, comparator: " + comp.getClass().getName());
 		for (int i = 0; i < personCount; i++) {
 			int mini = i;
 			for (int j = i; j < personCount; j++) {

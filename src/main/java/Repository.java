@@ -1,6 +1,8 @@
 import Person.Comparator.ComparatorForFullName;
 import Person.Comparator.ComparatorForId;
 import Person.Person;
+import Person.annotation.inject;
+import Person.annotation.injector;
 import Person.sort.bubble;
 import Person.sort.sort;
 
@@ -13,6 +15,7 @@ public class Repository {
   private Person[] persons;
   private Integer count;  //  кол-во элементов
   private Integer length; // максимальная длинна
+  @inject
   private sort sortType;
 
 //  создает пустой репозиторий на 10 персон и пузырьковым сортировщиком
@@ -22,6 +25,7 @@ public class Repository {
     this.length = 10;
     this.sortType = new bubble();
     log.info("repository created");
+    new injector().inject(this);
   }
 
   public Repository (sort sorter) {
@@ -42,6 +46,10 @@ public class Repository {
 
   public Integer getLength() {
     return length;
+  }
+
+  public String getSortType() {
+    return sortType.getClass().getName();
   }
 
   //добавляет пользователя в репозиторий, если занимается предпоследний слот, то расширяется в полтора раза

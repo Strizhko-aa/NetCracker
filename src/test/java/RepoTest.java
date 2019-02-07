@@ -66,8 +66,10 @@ public class RepoTest {
     repo.addPerson(user5);
     sort bubbleSorter = new bubble();
     ComparatorForFullName compFN = new ComparatorForFullName();
+    System.out.println("before testBubbleSortByName");
     repo.showRepository();
     bubbleSorter.sort(repo.getPersons(), repo.getCount(), compFN);
+    System.out.println("after testBubbleSortByName");
     repo.showRepository();
   }
 
@@ -82,8 +84,10 @@ public class RepoTest {
     repo.addPerson(user5);
     sort bubbleSort = new bubble();
     ComparatorForId compId = new ComparatorForId();
+    System.out.println("before testBubbleSortById");
     repo.showRepository();
     bubbleSort.sort(repo.getPersons(), repo.getCount(), compId);
+    System.out.println("after testBubbleSortById");
     repo.showRepository();
   }
 
@@ -99,8 +103,10 @@ public class RepoTest {
     repo.addPerson(user5);
     sort bubbleSort = new pasteSort();
     ComparatorForFullName compName = new ComparatorForFullName();
+    System.out.println("before testPasteSortName");
     repo.showRepository();
     bubbleSort.sort(repo.getPersons(), repo.getCount(), compName);
+    System.out.println("after testPasteSortName");
     repo.showRepository();
   }
 
@@ -115,8 +121,10 @@ public class RepoTest {
     repo.addPerson(user5);
     sort shakeSort = new shakeSort();
     ComparatorForId compId = new ComparatorForId();
+    System.out.println("before testShakeSortId");
     repo.showRepository();
     shakeSort.sort(repo.getPersons(), repo.getCount(), compId);
+    System.out.println("after testShakeSortId");
     repo.showRepository();
   }
 
@@ -126,7 +134,24 @@ public class RepoTest {
     Repository repo = new Repository(shake);
     repo.addPerson(user2);  // Petya
     repo.addPerson(user1);  // Vicheslav
-    repo.sort("fullName");
+    System.out.println("before createRepoWithSort");
     repo.showRepository();
+    repo.sort("fullName");
+    System.out.println("after createRepoWithSort");
+    repo.showRepository();
+  }
+
+  // тест injection Если при стандартном конструкторе сортровка вставкой, занчит это значение из файла
+  @Test
+  public void testInjection () {
+    Repository repo = new Repository();
+    repo.addPerson(user1);
+    repo.addPerson(user2);
+    repo.addPerson(user3);
+    repo.addPerson(user4);
+    repo.addPerson(user5);
+    repo.sort("fullName");
+    String expected = "Person.sort.pasteSort";
+    String actualy = repo.getSortType();
   }
 }

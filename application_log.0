@@ -1,16 +1,18 @@
-февр. 07, 2019 1:35:21 AM Main main
+февр. 07, 2019 6:59:16 PM Main main
 INFO: start application
-февр. 07, 2019 1:35:22 AM Repository <init>
+февр. 07, 2019 6:59:16 PM Repository <init>
 INFO: repository created
-февр. 07, 2019 1:35:22 AM Repository addPerson
+февр. 07, 2019 6:59:16 PM Repository addPerson
 INFO: add person
-февр. 07, 2019 1:35:22 AM Repository addPerson
+февр. 07, 2019 6:59:16 PM Repository addPerson
 INFO: add person
-февр. 07, 2019 1:35:22 AM Repository addPerson
+февр. 07, 2019 6:59:16 PM Repository addPerson
 INFO: add person
-февр. 07, 2019 1:35:22 AM Repository getPersonByFullName
+февр. 07, 2019 6:59:16 PM Repository getPersonByFullName
 INFO: try get person by full name
-февр. 07, 2019 1:35:22 AM Repository deletePersonByFullName
+февр. 07, 2019 6:59:16 PM Repository deletePersonByFullName
 INFO: try del by full name
-февр. 07, 2019 1:35:22 AM Repository getPersonByFullName
+февр. 07, 2019 6:59:16 PM Repository getPersonByFullName
 INFO: try get person by full name
+февр. 07, 2019 6:59:16 PM Person.sort.bubble sort
+INFO: start bubble sort, comparator: Person.Comparator.ComparatorForFullName

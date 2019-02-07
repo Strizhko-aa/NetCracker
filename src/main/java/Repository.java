@@ -1,4 +1,8 @@
+import Person.Comparator.ComparatorForFullName;
+import Person.Comparator.ComparatorForId;
 import Person.Person;
+import Person.sort.bubble;
+import Person.sort.sort;
 
 import java.util.logging.Logger;
 
@@ -9,11 +13,22 @@ public class Repository {
   private Person[] persons;
   private Integer count;  //  кол-во элементов
   private Integer length; // максимальная длинна
+  private sort sortType;
 
-  Repository() {
+//  создает пустой репозиторий на 10 персон и пузырьковым сортировщиком
+  public Repository () {
     this.persons = new Person[10];
     this.count = 0;
     this.length = 10;
+    this.sortType = new bubble();
+    log.info("repository created");
+  }
+
+  public Repository (sort sorter) {
+    this.persons = new Person[10];
+    this.count = 0;
+    this.length = 10;
+    this.sortType = sorter;
     log.info("repository created");
   }
 
@@ -77,6 +92,23 @@ public class Repository {
       this.persons = tmpMass;
       this.count--;
       this.length--;
+    }
+  }
+
+  // принимает имя поля, по которому сортировать
+  // fullName, id
+  public void sort (String fieldName) {
+    if (fieldName.equals("fullName")) {
+      ComparatorForFullName comp = new ComparatorForFullName();
+      this.sortType.sort(this.getPersons(), this.getCount(), comp);
+    } else {
+      if (fieldName.equals("id")) {
+        ComparatorForId comp =  new ComparatorForId();
+        this.sortType.sort(this.getPersons(), this.getCount(), comp);
+      } else {  //  если ничего не подошло, то сортировать по имени
+        ComparatorForFullName comp = new ComparatorForFullName();
+        this.sortType.sort(this.getPersons(), this.getCount(), comp);
+      }
     }
   }
 

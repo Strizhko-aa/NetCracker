@@ -119,4 +119,14 @@ public class RepoTest {
     shakeSort.sort(repo.getPersons(), repo.getCount(), compId);
     repo.showRepository();
   }
+
+  @Test
+  public void createRepoWithSort () {
+    sort shake = new shakeSort();
+    Repository repo = new Repository(shake);
+    repo.addPerson(user2);  // Petya
+    repo.addPerson(user1);  // Vicheslav
+    repo.sort("fullName");
+    repo.showRepository();
+  }
 }

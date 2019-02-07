@@ -11,7 +11,6 @@ public class Person {
   private int age;
 
   /**
-   *
    * @return строку с всеми данными о пользователе
    */
   @Override

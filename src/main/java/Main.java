@@ -20,6 +20,7 @@ public class Main {
     repo.showRepository();
     System.out.println("i found -> " + repo.getPersonByFullName("Vasya Vasua"));
     repo.deletePersonByFullName("Vasya Vasua");
+    repo.sort("fullName");
     repo.showRepository();
   }
 }
